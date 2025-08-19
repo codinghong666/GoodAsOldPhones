@@ -13,6 +13,12 @@ struct ProductsTableViewController {
   private products: Array<Product> = products;
   private identifer: string = "productCell";
 
+  aboutToAppear() {
+    console.log('ProductsTableViewController aboutToAppear');
+    console.log('Products count:', this.products.length);
+    console.log('Products:', JSON.stringify(this.products));
+  }
+
   build() {
     Column({ space: 0 }) {
       // MARK: - UITableViewDataSource

@@ -2,6 +2,7 @@
   "src": [
     "pages/ProductPage",
     "pages/Index",
-    "pages/ProductView"
+    "pages/ProductView",
+    "ProductsTableViewController"
   ]
 }
