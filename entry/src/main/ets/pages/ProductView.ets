@@ -23,23 +23,53 @@ struct ProductView {
   build() {
     Column() {
       if (this.product) {
-        // Header with product name
-        Text(this.product.name)
-          .fontSize(24)
-          .fontWeight(FontWeight.Bold)
-          .margin(20)
+        // Header with back button and product name
+        Row() {
+          Button('← 返回')
+            .fontSize(16)
+            .backgroundColor('#007AFF')
+            .borderRadius(8)
+            .onClick(() => {
+              router.back();
+            })
+          
+          Text(this.product.name)
+            .fontSize(24)
+            .fontWeight(FontWeight.Bold)
+            .margin({ left: 20 })
+        }
+        .width('100%')
+        .justifyContent(FlexAlign.Start)
+        .margin(20)
 
-        // Fullscreen image
+        // Fullscreen image with better sizing
         if (this.product.fullscreenImageName) {
           Image($r(`app.media.${this.product.fullscreenImageName}`))
-            .width('90%')
-            .height(300)
+            .width('100%')
+            .height('60%')
+            .objectFit(ImageFit.Contain)
             .margin(10)
         }
-      } else {
-        Text('Product not found')
+
+        // Product description
+        Text(`产品名称: ${this.product.name}`)
           .fontSize(18)
           .margin(20)
+      } else {
+        Column() {
+          Button('← 返回')
+            .fontSize(16)
+            .backgroundColor('#007AFF')
+            .borderRadius(8)
+            .onClick(() => {
+              router.back();
+            })
+          
+          Text('Product not found')
+            .fontSize(18)
+            .margin(20)
+        }
+        .alignItems(HorizontalAlign.Center)
       }
     }
     .width('100%')
