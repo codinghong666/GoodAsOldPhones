@@ -2,7 +2,8 @@
 //  GoodAsOldPhones
 
 import router from '@ohos.router';
-import { Product, products } from '../ProductsModel';
+import assertNull from '@ohos/hypium/src/main/module/assert/assertNull';
+import { Product, products } from '../model/ProductsModel';
 
 @Entry
 @Component
@@ -12,11 +13,12 @@ struct ProductView {
   aboutToAppear() {
     interface ProductViewParams { productIndex?: number }
     const params: ProductViewParams = router.getParams() as ProductViewParams;
-    const index = typeof params?.productIndex === 'number' ? params.productIndex : 0; // 默认显示第一个产品
+    const index = typeof params?.productIndex === 'number' ? params.productIndex : -1; // 默认显示第一个产品
+    if(index == -1)
+        assertNull();
+
     if (index >= 0 && index < products.length) {
       this.product = products[index];
-    } else {
-      this.product = products[0]; // 如果索引无效，显示第一个产品
     }
   }
 

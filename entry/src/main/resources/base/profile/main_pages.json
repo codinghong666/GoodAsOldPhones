@@ -3,6 +3,6 @@
     "pages/ProductPage",
     "pages/Index",
     "pages/ProductView",
-    "ProductsTableViewController"
+    "pages/ProductsTableViewController"
   ]
 }
